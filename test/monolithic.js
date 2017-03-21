@@ -214,3 +214,48 @@ test('can set prefix option', t => {
   t.regex(className, /^foo\-/)
 })
 
+test('can define a keyframe with from and to objects', t => {
+  cxs({
+    '@keyframes fooAnimation': {
+      from: {
+        background: 'red',
+      },
+      to: {
+        background: 'blue',
+      },
+    },
+  })
+
+  const expectedCss = '@keyframes fooAnimation{from{background:red} to{background:blue}}'
+
+  t.truthy(getCss().includes(expectedCss))
+});
+
+test('can define a keyframe with percentage steps', t => {
+  cxs({
+    '@keyframes fooAnimation': {
+      '12%': {
+        background: 'red',
+      },
+      '52%': {
+        background: 'blue',
+      },
+      '100%': {
+        background: 'black',
+      },
+    },
+  })
+
+  const expectedCss =
+    '@keyframes fooAnimation{12%{background:red} 52%{background:blue} 100%{background:black}}'
+
+  t.truthy(getCss().includes(expectedCss))
+});
+
+test('supports using keyframe animation', t => {
+  cxs('body', {
+    animation: 'fooAnimation 2s'
+  })
+
+  t.truthy(getCss().includes('animation:fooAnimation 2s'))
+})

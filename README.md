@@ -23,6 +23,7 @@ to maximize deduplication and help with dead code elimination.
 - Framework independent
 - CSS-in-JS
 - Media queries
+- Keyframes
 - Pseudoclasses
 - Nested selectors
 - Avoid maintaining separate stylesheets
@@ -77,6 +78,29 @@ cxs({
     color: 'red'
   }
 })
+```
+
+### Keyframe Animations
+
+Defining a new keyframe:
+```js
+cxs({
+  '@keyframe myAnimation': {
+    from: {
+      background: 'red',
+    },
+    to: {
+      background: 'blue',
+    },
+  }
+});
+```
+
+Using the keyframe:
+```js
+const animated = cxs({
+  animation: 'myAnimation 2s',
+});
 ```
 
 ### Nested Selectors
