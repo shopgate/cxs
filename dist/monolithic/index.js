@@ -118,7 +118,7 @@ var parse = function parse(selector, styles, media) {
 var parseAnimation = function parseAnimation(selector, animation) {
   var animationStyles = Object.keys(animation).map(function (stageKey) {
     return createAnimationRule(stageKey, Object.keys(animation[stageKey]).map(function (styleKey) {
-      return createDec(styleKey, animation[stageKey][styleKey]);
+      return createDec(styleKey, animation[stageKey][styleKey]) + ';';
     }));
   });
   return createAnimationRule(selector, animationStyles);
