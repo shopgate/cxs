@@ -226,7 +226,7 @@ test('can define a keyframe with from and to objects', t => {
     },
   })
 
-  const expectedCss = '@keyframes fooAnimation{from{background:red} to{background:blue}}'
+  const expectedCss = '@keyframes fooAnimation{from{background:red;} to{background:blue;}}'
 
   t.truthy(getCss().includes(expectedCss))
 });
@@ -247,7 +247,7 @@ test('can define a keyframe with percentage steps', t => {
   })
 
   const expectedCss =
-    '@keyframes fooAnimation{12%{background:red} 52%{background:blue} 100%{background:black}}'
+    '@keyframes fooAnimation{12%{background:red;} 52%{background:blue;} 100%{background:black;}}'
 
   t.truthy(getCss().includes(expectedCss))
 });

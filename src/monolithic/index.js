@@ -98,7 +98,7 @@ const parseAnimation = (selector, animation) => {
       createAnimationRule(
         stageKey,
         Object.keys(animation[stageKey]).map(styleKey =>
-          createDec(styleKey, animation[stageKey][styleKey])
+          createDec(styleKey, animation[stageKey][styleKey]) + ';'
         )
       )
     );
